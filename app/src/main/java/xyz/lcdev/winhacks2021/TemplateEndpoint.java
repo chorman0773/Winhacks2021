@@ -32,6 +32,11 @@ public class TemplateEndpoint {
         return "signup";
     }
 
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+
     @PostMapping(value="/auth/create-account",produces="application/json")
     public User createAccount(@RequestParam("uname") String userName, @RequestParam("email") String addr, @RequestParam("passwd") byte[] passwd) throws SQLException, InvalidKeyException{
         return User.createAccount(userName,addr,passwd);
