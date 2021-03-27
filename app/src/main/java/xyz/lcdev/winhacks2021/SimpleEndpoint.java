@@ -11,8 +11,14 @@ public class SimpleEndpoint {
         System.out.println("Meep");
         return "index";
     }
+
     @GetMapping("/error")
     public String error(Model model) {
         return "error";
+    }
+
+    @GetMapping("/signup")
+    public String signup(Model model) {
+        return "signup";
     }
 }
