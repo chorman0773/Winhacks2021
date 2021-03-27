@@ -120,7 +120,7 @@ public class User implements UserPrincipal {
             uuidCache.put(id,ret);
         }
 
-        System.out.printf("/auth/create-user: Created %s (%s, %s)",userName,addrHash,id.toString());
+        System.out.printf("/auth/create-user: Created %s (%s, %s)",userName,addrHashb64,id.toString());
 
         var create = conn.prepareStatement("INSERT INTO Users VALUES (?,?,?,?,?,?)");
         create.setString(1,id.toString());

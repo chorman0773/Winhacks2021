@@ -9,9 +9,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+import java.io.IOException;
+import java.util.Properties;
+
 @SpringBootApplication
 public class App {
+    public static final Properties app = new Properties();
 
+    static{
+        try {
+            app.load(App.class.getClassLoader().getResourceAsStream("application.properties"));
+        } catch (IOException e) {
+            throw new ExceptionInInitializerError(e);
+        }
+    }
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
     }

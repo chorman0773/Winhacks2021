@@ -17,7 +17,6 @@ public class Database {
         // Currently just doing sqlite
         if(conn!=null)
             return conn;
-        Path p = Paths.get(".data","system.db");
-        return conn = JDBC.createConnection(JDBC.PREFIX+p.toAbsolutePath(),new Properties());
+        return conn = JDBC.createConnection("jdbc:"+App.app.getProperty("lc.winhacks2021.cockroachdb.connect"),new Properties());
     }
 }
