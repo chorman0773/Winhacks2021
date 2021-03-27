@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -17,6 +18,6 @@ public class Database {
         // Currently just doing sqlite
         if(conn!=null)
             return conn;
-        return conn = JDBC.createConnection("jdbc:"+App.app.getProperty("lc.winhacks2021.cockroachdb.connect"),new Properties());
+        return conn = DriverManager.getConnection("jdbc:" + App.app.getProperty("lc.winhacks2021.cockroachdb.connect"));
     }
 }
