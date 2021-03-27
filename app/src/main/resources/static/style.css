@@ -1,3 +1,36 @@
-h1 {
+.title {
     text-align: center;
+}
+
+ul.menubar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #c0c0c0;
+}
+
+li.menubar {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 8px;
+    text-decoration: none;
+}
+
+li.menubar:hover {
+    background-color: #a0a0a0;
+}
+
+a.menubar {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 8px;
+    text-decoration: none;
+}
+
+a.menubar:hover {
+    background-color: #a0a0a0;
 }

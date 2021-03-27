@@ -11,4 +11,8 @@ public class SimpleEndpoint {
         System.out.println("Meep");
         return "index";
     }
+    @GetMapping("/error")
+    public String error(Model model) {
+        return "error";
+    }
 }
