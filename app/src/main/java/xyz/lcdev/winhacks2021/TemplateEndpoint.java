@@ -11,11 +11,15 @@ import java.security.InvalidKeyException;
 import java.sql.SQLException;
 
 @Controller
-public class SimpleEndpoint {
+public class TemplateEndpoint {
     @GetMapping("/")
     public String index(Model model) {
-        System.out.println("Meep");
         return "index";
+    }
+
+    @GetMapping("/db")
+    public String db(Model model) {
+        return "db";
     }
 
     @GetMapping("/error")

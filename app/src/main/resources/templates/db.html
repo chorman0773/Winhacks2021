@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Database</title>
+        <link rel="stylesheet" href="/style.css"></link>
+        <script src="common.js"></script>
+        <script type="text/javascript">
+            window.onload = loadFacilities;
+            function loadFacilities() {
+                get("/rest/getFacilities").then(data => {
+                    facilities = JSON.parse(data);
+                    facilityList = document.getElementById("facilityList");
+                    for(var i = 0; i < facilities.length; i++) {
+                        facilityList.innerHTML += "<li class=\"sidebar\">" +
+                            "<a class=\"sidebar\" href=\"#\" onclick=\"alert('"+facilities[i].name+"')\">" +
+                            "<img src=\"" + (facilities[i].image || "/images/unknownSite.png") + "\" alt=\"Image\">" +
+                            facilities[i].name +
+                            "</li></a>";
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div th:replace="fragments/header :: header">...</div>
+        <div style="display:flex;height:100%">
+            <ul id="facilityList" class="sidebar"></ul>
+        </div>
+    </body>
+</html>
