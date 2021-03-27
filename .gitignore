@@ -7,3 +7,5 @@ build
 .idea
 
 /app/.data
+
+/app/src/main/resources/application.properties
