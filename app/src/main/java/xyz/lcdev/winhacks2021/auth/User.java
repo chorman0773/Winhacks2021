@@ -81,16 +81,16 @@ public class User implements UserPrincipal {
     public static User createAccount( String userName, String addr, byte[] passwd) throws SQLException, InvalidKeyException {
         Connection conn = Database.open();
         if(!conn.getMetaData().getTables(null,null,"Users",null).next()){
-            conn.createStatement().executeUpdate("""
-                CREATE TABLE "Users"(
-                    UUID TEXT NONNULL,
-                    AddrHash TEXT NONNULL,
-                    AuthSrc TEXT,
-                    AuthSalt TEXT,
-                    UserName TEXT NONNULL,
-                    PERMISSIONS INTEGER
-                )
-                """);
+            conn.createStatement().executeUpdate(
+                "CREATE TABLE \"Users\"(\n" +
+                    "UUID TEXT NONNULL,    \n" +
+                    "AddrHash TEXT NONNULL,\n" +
+                    "AuthSrc TEXT,         \n" +
+                    "AuthSalt TEXT,        \n" +
+                    "UserName TEXT NONNULL,\n" +
+                    "PERMISSIONS INTEGER   \n" +
+                ");"
+                );
         }
         byte[] addrHash = SHA256.digest(addr.getBytes(StandardCharsets.UTF_8));
         String addrHashb64 = Base64.encodeBase64String(addrHash);

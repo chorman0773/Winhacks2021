@@ -15,7 +15,7 @@ plugins {
 group = "xyz.lcdev"
 version = "0.1.0"
 
-sourceCompatibility = 15
+sourceCompatibility = 11
 
 repositories {
     mavenLocal()
