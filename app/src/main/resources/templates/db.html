@@ -14,7 +14,7 @@
                     for(var i = 0; i < facilities.length; i++) {
                         facilityList.innerHTML += "<li class=\"sidebar\">" +
                             "<a class=\"sidebar\" href=\"#\" onclick=\"alert('"+facilities[i].name+"')\">" +
-                            "<img src=\"" + (facilities[i].image || "/images/unknownSite.png") + "\" alt=\"Image\">" +
+                            "<img width=32 height=32 src=\"" + (facilities[i].image || "/images/unknownSite.png") + "\" alt=\"Image\">" +
                             facilities[i].name +
                             "</li></a>";
                     }
