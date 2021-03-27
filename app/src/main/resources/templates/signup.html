@@ -2,17 +2,52 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Sign up</title>
         <link rel="stylesheet" href="/style.css"></link>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     </head>
     <body>
         <div th:replace="fragments/header :: header">...</div>
-        <h1>Sign up</h1>
-        <form action="/auth/create-account" method="POST">
-            <label for="uname">Username:</label> <input id="uname" name="uname" type="text" /> <br />
-            <label for="email">Email:</label> <input id="email" name="email" type="text" /> <br />
-            <label for="passwd">Password:</label> <input id="passwd" name="passwd" type="password" /> <br />
-            <input value="Create account" type="submit" />
-        </form>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div>
+                        <img src="../static/signup.png" height="500px">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form">
+                        <form action="/auth/create-account" method="POST">
+                            <div class="jumbotron">
+                                <h1>Sign up</h1>
+                            </div>
+                            <div class="form-group">
+                                <label for="uname">Username</label>
+                                <input type="text" class="form-control" id="uname" placeholder="Enter Username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" placeholder="Enter Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="passwd">Password</label>
+                                <input type="password" class="form-control" id="passwd" placeholder="Enter Password" required>
+                            </div>
+                            <input class="btn btn-primary" value="Create account" type="submit" />
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </body>
 </html>
