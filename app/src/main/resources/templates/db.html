@@ -13,19 +13,28 @@
                     facilityList = document.getElementById("facilityList");
                     for(var i = 0; i < facilities.length; i++) {
                         facilityList.innerHTML += "<li class=\"sidebar\">" +
-                            "<a class=\"sidebar\" href=\"#\" onclick=\"alert('"+facilities[i].name+"')\">" +
+                            "<a class=\"sidebar\" href=\"#\" onclick=\"populateFacility('"+facilities[i].name+"')\">" +
                             "<img width=32 height=32 src=\"" + (facilities[i].image || "/images/unknownSite.png") + "\" alt=\"Image\">" +
                             facilities[i].name +
                             "</li></a>";
                     }
                 });
             }
+            function populateFacility(name) {
+                get("/rest/getFacilityData?name="+name).then(data => {
+                    facility = JSON.parse(data);
+                    facilityInfo = document.getElementById("facilityInfo");
+                    facilityInfo.innerHTML = "<h2>" + facility.name + "</h2>";
+                    facilityInfo.innerHTML += "<h3>" + facility.location + "</h3>";
+                });
+            }
         </script>
     </head>
     <body>
         <div th:replace="fragments/header :: header">...</div>
-        <div style="display:flex;height:100%">
+        <div style="display:flex;height:100%;flex-direction:column">
             <ul id="facilityList" class="sidebar"></ul>
+            <div id="facilityInfo" style="width:100%"></div>
         </div>
     </body>
 </html>
