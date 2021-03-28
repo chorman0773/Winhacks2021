@@ -29,7 +29,13 @@
                     result += "<h3>Located in: " + facility.location + "</h3>";
                     result += "<p>Equipment:</p><ul>"
                     for(var i = 0; i < facility.equipment.length; i++) {
-                        result += "<li>" + facility.equipment[i].name + "</li>";
+                        result += "<li>" + facility.equipment[i].name + "<ul>";
+                        result += "<li>" + facility.equipment[i].trained + " people trained</li>";
+                        result += "<li>" + facility.equipment[i].researchersUsing + " researchers using this equipment</li>";
+                        result += "<li>" + facility.equipment[i].publications + " publications using this equipment</li>";
+                        result += "<li>" + facility.equipment[i].students + " students using this equipment</li>";
+                        result += "<li>" + facility.equipment[i].samplesProcessed + " samples processed using this equipment</li>";
+                        result += "</ul></li>";
                     }
                     result += "</ul>";
                     facilityInfo.innerHTML = result;
