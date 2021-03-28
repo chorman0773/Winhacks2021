@@ -5,20 +5,46 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Sign up</title>
         <link rel="stylesheet" href="/style.css"></link>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     </head>
     <body>
         <div th:replace="fragments/header :: header">...</div>
 
-        <h1>Log in</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div>
+                        <img src="/images/signup.png" height="500px">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form">
+                        <form action="/auth/create-account" method="POST" style="align: center">
+                            <div class="jumbotron">
+                                <h1>Log In</h1>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="passwd">Password</label>
+                                <input type="password" class="form-control" id="passwd" name="passwd" placeholder="Enter Password" required>
+                            </div>
+                            <input class="btn btn-success" value="Log in" type="submit" />
+                            <a class="btn btn-primary" href="/signup">Create account</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <form action="/auth/create-account" method="POST" style="align: center">
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" required> <br />
-            <label for="passwd">Password</label>
-            <input type="password" id="passwd" name="passwd" required> <br />
-            <input value="Log in" type="submit" />
-        </form>
 
-        <a href="/signup">Create account</a>
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     </body>
 </html>
