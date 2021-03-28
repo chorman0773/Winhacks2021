@@ -13,28 +13,28 @@
                     facilityList = document.getElementById("facilityList");
                     for(var i = 0; i < facilities.length; i++) {
                         facilityList.innerHTML += "<li class=\"sidebar\">" +
-                            "<a class=\"sidebar\" href=\"#\" onclick=\"populateFacility('"+facilities[i].id+"')\">" +
+                            "<a class=\"sidebar\" href=\"#\" onclick=\"populateFacility('"+facilities[i].id+"','"+facilities[i].name+",'"+facilities[i].location+"')\">" +
                             "<img width=32 height=32 src=\"" + (facilities[i].image || "/images/unknownSite.png") + "\" alt=\"Image\">" +
                             facilities[i].name +
                             "</li></a>";
                     }
                 });
             }
-            function populateFacility(id) {
+            function populateFacility(id, name, location) {
                 get("/rest/getFacilityData?id="+id).then(data => {
                     facility = JSON.parse(data);
                     facilityInfo = document.getElementById("facilityInfo");
                     result = "";
-                    result = "<h2>" + facility.name + "</h2>";
-                    result += "<h3>Located in: " + facility.location + "</h3>";
+                    result = "<h2>" + name + "</h2>";
+                    result += "<h3>Located in: " + location + "</h3>";
                     result += "<p>Equipment:</p><ul>"
-                    for(var i = 0; i < facility.equipment.length; i++) {
-                        result += "<li>" + facility.equipment[i].name + "<ul>";
-                        result += "<li>" + facility.equipment[i].trained + " people trained</li>";
-                        result += "<li>" + facility.equipment[i].researchersUsing + " researchers using this equipment</li>";
-                        result += "<li>" + facility.equipment[i].publications + " publications using this equipment</li>";
-                        result += "<li>" + facility.equipment[i].students + " students using this equipment</li>";
-                        result += "<li>" + facility.equipment[i].samplesProcessed + " samples processed using this equipment</li>";
+                    for(var i = 0; i < facility.length; i++) {
+                        result += "<li>" + facility[i].name + "<ul>";
+                        result += "<li>" + facility[i].trained + " people trained</li>";
+                        result += "<li>" + facility[i].researchersUsing + " researchers using this equipment</li>";
+                        result += "<li>" + facility[i].publications + " publications using this equipment</li>";
+                        result += "<li>" + facility[i].students + " students using this equipment</li>";
+                        result += "<li>" + facility[i].samplesProcessed + " samples processed using this equipment</li>";
                         result += "</ul></li>";
                     }
                     result += "</ul>";
