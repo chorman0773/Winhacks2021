@@ -13,7 +13,7 @@
                     facilityList = document.getElementById("facilityList");
                     for(var i = 0; i < facilities.length; i++) {
                         facilityList.innerHTML += "<li class=\"sidebar\">" +
-                            "<a class=\"sidebar\" href=\"#\" onclick=\"populateFacility('"+facilities[i].id+"','"+facilities[i].name+",'"+facilities[i].location+"')\">" +
+                            "<a class=\"sidebar\" href=\"#\" onclick=\"populateFacility('"+facilities[i].id+"','"+facilities[i].name+"','"+facilities[i].location+"')\">" +
                             "<img width=32 height=32 src=\"" + (facilities[i].image || "/images/unknownSite.png") + "\" alt=\"Image\">" +
                             facilities[i].name +
                             "</li></a>";
