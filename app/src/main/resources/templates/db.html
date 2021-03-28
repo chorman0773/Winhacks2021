@@ -27,17 +27,17 @@
                     result = "";
                     result = "<h2>" + name + "</h2>";
                     result += "<h3>Located in: " + location + "</h3>";
-                    result += "<p>Equipment:</p><ul>"
+                    result += "<p>Equipment:</p><table><th><td>Name</td><td>People trained</td><td>Researchers using</td><td>Publications using</td><td>Students using</td><td>Samples processed</td>";
                     for(var i = 0; i < facility.length; i++) {
-                        result += "<li>" + facility[i].name + "<ul>";
-                        result += "<li>" + facility[i].trained + " people trained</li>";
-                        result += "<li>" + facility[i].researchers + " researchers using this equipment</li>";
-                        result += "<li>" + facility[i].publications + " publications using this equipment</li>";
-                        result += "<li>" + facility[i].students + " students using this equipment</li>";
-                        result += "<li>" + facility[i].samples + " samples processed using this equipment</li>";
-                        result += "</ul></li>";
+                        result += "<tr><td>" + facility[i].name + "</td>";
+                        result += "<td>" + facility[i].trained + " people trained</td>";
+                        result += "<td>" + facility[i].researchers + " researchers using this equipment</td>";
+                        result += "<td>" + facility[i].publications + " publications using this equipment</td>";
+                        result += "<td>" + facility[i].students + " students using this equipment</td>";
+                        result += "<td>" + facility[i].samples + " samples processed using this equipment</td>";
+                        result += "</tr>";
                     }
-                    result += "</ul>";
+                    result += "</table>";
                     facilityInfo.innerHTML = result;
                 });
             }
