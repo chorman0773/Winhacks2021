@@ -31,12 +31,11 @@ public class RestEndpoint {
         return ret;
     }
 
-    @GetMapping("/rest/getFacilityData")
+    @GetMapping(value="/rest/getFacilityData",produces="application/json")
     public List<FacilityRow> getFacilityData(@RequestParam String id) throws SQLException {
         Connection conn = Database.open();
         id+=".Equipment";
-        var stmt = conn.prepareStatement("SELECT * FROM ?");
-        stmt.setString(1,id);
+        var stmt = conn.prepareStatement(String.format("SELECT * FROM \"%s\"",id));
         List<FacilityRow> ret = new ArrayList<>();
         try(var rs = stmt.executeQuery()){
             while(rs.next()){
