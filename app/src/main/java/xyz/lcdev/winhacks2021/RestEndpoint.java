@@ -40,7 +40,7 @@ public class RestEndpoint {
         List<FacilityRow> ret = new ArrayList<>();
         try(var rs = stmt.executeQuery()){
             while(rs.next()){
-                ret.add(new FacilityRow(id.getString(1),id.getLong(2),id.getLong(3),id.getLong(4),id.getLong(5),id.getLong(6)));
+                ret.add(new FacilityRow(rs.getString(1),rs.getLong(2),rs.getLong(3),rs.getLong(4),rs.getLong(5),rs.getLong(6)));
             }
         }
         return ret;
