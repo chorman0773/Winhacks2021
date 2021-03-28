@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Database</title>
         <link rel="stylesheet" href="/style.css"></link>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="common.js"></script>
         <script type="text/javascript">
             window.onload = loadFacilities;
@@ -27,9 +28,9 @@
                     result = "";
                     result = "<h2>" + name + "</h2>";
                     result += "<h3>Located in: " + location + "</h3>";
-                    result += "<p>Equipment:</p><table><th><td>People trained</td><td>Researchers using</td><td>Publications using</td><td>Students using</td><td>Samples processed</td>";
+                    result += "<p>Equipment:</p><table class='table'><th><td scope=\"col\">People trained</td><td scope=\"col\">Researchers using</td><td scope=\"col\">Publications using</td><td scope=\"col\">Students using</td><td scope=\"col\">Samples processed</td>";
                     for(var i = 0; i < facility.length; i++) {
-                        result += "<tr><td>" + facility[i].name + "</td>";
+                        result += "<tr><td scope=\"col\">" + facility[i].name + "</td>";
                         result += "<td>" + facility[i].trained + "</td>";
                         result += "<td>" + facility[i].researchers + "</td>";
                         result += "<td>" + facility[i].publications + "</td>";
@@ -49,5 +50,12 @@
             <ul id="facilityList" class="sidebar"></ul>
             <div id="facilityInfo" style="width:100%"></div>
         </div>
+
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </body>
 </html>
