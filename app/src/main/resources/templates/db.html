@@ -24,15 +24,22 @@
                 get("/rest/getFacilityData?name="+name).then(data => {
                     facility = JSON.parse(data);
                     facilityInfo = document.getElementById("facilityInfo");
-                    facilityInfo.innerHTML = "<h2>" + facility.name + "</h2>";
-                    facilityInfo.innerHTML += "<h3>" + facility.location + "</h3>";
+                    result = "";
+                    result = "<h2>" + facility.name + "</h2>";
+                    result += "<h3>Located in: " + facility.location + "</h3>";
+                    result += "<p>Equipment:</p><ul>"
+                    for(var i = 0; i < facility.equipment.length; i++) {
+                        result += "<li>" + facility.equipment[i].name + "</li>";
+                    }
+                    result += "</ul>";
+                    facilityInfo.innerHTML = result;
                 });
             }
         </script>
     </head>
     <body>
         <div th:replace="fragments/header :: header">...</div>
-        <div style="display:flex;height:100%;flex-direction:column">
+        <div style="display:flex;height:100%;flex-direction:row">
             <ul id="facilityList" class="sidebar"></ul>
             <div id="facilityInfo" style="width:100%"></div>
         </div>
