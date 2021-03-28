@@ -26,11 +26,11 @@
                     facility = JSON.parse(data);
                     facilityInfo = document.getElementById("facilityInfo");
                     result = "";
-                    result = "<h2>" + name + "</h2>";
-                    result += "<h3>Located in: " + location + "</h3>";
-                    result += "<p>Equipment:</p><table class='table'><th><td scope=\"col\">People trained</td><td scope=\"col\">Researchers using</td><td scope=\"col\">Publications using</td><td scope=\"col\">Students using</td><td scope=\"col\">Samples processed</td>";
+                    result = "<h2 style='text-align: center'>" + name + "</h2>";
+                    result += "<h3>Located in: <b>" + location + "</b></h3>";
+                    result += "<p>Equipment:</p><table class='table'><th><th scope=\"col\">People trained</th><th scope=\"col\">Researchers using</th><th scope=\"col\">Publications using</th><th scope=\"col\">Students using</th><th scope=\"col\">Samples processed</th>";
                     for(var i = 0; i < facility.length; i++) {
-                        result += "<tr><td scope=\"col\">" + facility[i].name + "</td>";
+                        result += "<tr><th scope=\"col\">" + facility[i].name + "</th>";
                         result += "<td>" + facility[i].trained + "</td>";
                         result += "<td>" + facility[i].researchers + "</td>";
                         result += "<td>" + facility[i].publications + "</td>";
@@ -48,7 +48,9 @@
         <div th:replace="fragments/header :: header">...</div>
         <div style="display:flex;height:100%;flex-direction:row">
             <ul id="facilityList" class="sidebar"></ul>
-            <div id="facilityInfo" style="width:100%"></div>
+            <div class="container">
+                <div id="facilityInfo" style="width:100%"></div>
+            </div>
         </div>
 
 
