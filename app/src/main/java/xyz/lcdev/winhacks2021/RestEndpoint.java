@@ -28,4 +28,9 @@ public class RestEndpoint {
     public User createAccount(@RequestParam("uname") String userName, @RequestParam("email") String addr, @RequestParam("passwd") byte[] passwd) throws SQLException, InvalidKeyException {
         return User.createAccount(userName,addr,passwd);
     }
+
+    @PostMapping(value="/auth/lookup")
+    public User lookupAccount(@RequestParam("email") String addr) throws SQLException {
+        return User.getByAddress(addr);
+    }
 }

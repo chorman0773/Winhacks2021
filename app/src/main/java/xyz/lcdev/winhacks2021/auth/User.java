@@ -36,6 +36,7 @@ public class User implements UserPrincipal {
     private final byte[] salt;
     private final long permissions;
 
+
     private boolean dirty;
 
     private static final MessageDigest SHA256;
@@ -131,6 +132,37 @@ public class User implements UserPrincipal {
         create.setLong(6,3);
         create.executeUpdate();
         return ret;
+    }
+
+    public static User getByAddress(String addr) throws SQLException {
+        byte[] addrHash = SHA256.digest(addr.getBytes(StandardCharsets.UTF_8));
+
+        User u = addrCache.get(addrHash);
+        if(u!=null)
+            return u;
+        else{
+            String addrHashb64 = Base64.encodeBase64String(addrHash);
+            Connection conn = Database.open();
+            var lookup = conn.prepareStatement("SELECT * FROM Users WHERE AddrHash=?");
+            lookup.setString(1,addrHashb64);
+            try(var rs = lookup.executeQuery()){
+                if(rs.next())
+                    throw new AuthError(HttpStatus.NOT_FOUND,12,"No such user");
+                var id = UUID.fromString(rs.getString(1));
+                var auth = Base64.decodeBase64(rs.getString(3));
+                var salt = Base64.decodeBase64(rs.getString(4));
+                var uname = rs.getString(5);
+                var permissions = rs.getLong(6);
+                u = new User(id,addrHashb64,auth,salt,uname,permissions);
+                synchronized(cacheInsertLock){
+                    User n = uuidCache.putIfAbsent(id,u);
+                    if(n!=null)
+                        return n;
+                    addrCache.put(addrHash,u);
+                }
+                return u;
+            }
+        }
     }
 
 
